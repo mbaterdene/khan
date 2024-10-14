@@ -1,0 +1,681 @@
+{% load static %}
+{% load notifications_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Хан-Уул дүүргийн иргэний хэргийн анхан шатны шүүх</title>
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/vendor.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+    {% block header_extends %} {% endblock %}
+    <style type="text/css">
+        .single-follow .follow-us {
+            border: 1px solid #f4f4f4;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 13px;
+            padding-right: 13px;
+            border-radius: 5px;
+            margin-bottom: 2px;
+            width: 100%
+        }
+
+        .banners_01:hover {
+            background: #ccc;
+        }
+
+        .banners {
+            background: #0a3366;
+            border: 1px solid #0a3366;
+        }
+
+        .banners:hover {
+            background: #025197;
+        }
+
+        .banners img {
+            width: 50px
+        }
+
+        .single-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between
+        }
+    </style>
+    <script type="text/javascript">
+        var col = new String();
+        var x=1;var y;
+        
+        function blink()
+        {
+         if(x%2) 
+         {
+          col = "rgb(255,0,0)";
+         }else{
+          col = "rgb(255,255,255)";
+         }
+        
+         aF.style.color=col;x++;if(x>2){x=1};setTimeout("blink()", 800);
+        }
+        </script>
+</head>
+
+<body onload="blink()">
+    <!-- Header Section Start -->
+    <div class="header section">
+        <!-- Header Top Start -->
+        <div class="header-top bg-primary">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Header Top Message Start -->
+                    <div class="col-12">
+                        <div class="header-top-msg-wrapper">
+                            <p class="header-top-message">
+                                <i class="fa fa-phone"></i> &nbsp;+(976)&nbsp;-&nbsp;(11)&nbsp;-&nbsp;341610
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                            <p class="header-top-message">
+                                <i class="fa fa-envelope-o"></i> &nbsp; i_bkhs_tg@shuukh.mn
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                            <p class="header-top-message text-center">
+                                <a id="aF" href="https://iaac.mn/gomdol-medeelel-uguh">АТГ-д гомдол мэдээлэл өгөх</a>
+                            </p>
+                            <div class="header-top-close-btn">
+                                <div class="widget-social">
+                                    <a title="Facebook" href="https://www.facebook.com/khanuul.civilcourt.gov.mn/"><i class="fa fa-facebook-f"></i></a>
+                                    <!-- <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a> -->
+                                    <!-- <a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a> -->
+                                    <a title="Youtube" href="https://www.youtube.com/@Хан-УулдүүргийнИргэнийхэргийна"><i class="fa fa-youtube"></i></a>
+                                    <!-- <a title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Header Top Message End -->
+                </div>
+            </div>
+        </div>
+        <!-- Header Top End -->
+        <!-- Header Bottom Start -->
+        <div class="header-bottom">
+            <div class="header-sticky">
+                <div class="container">
+                    <div class="row align-items-center position-relative">
+
+                        <!-- Header Logo Start -->
+                        <div class="col-md-10 col-lg-10 col-xl-2 col-10">
+                            <div class="header-logo">
+                                <a href="{% url 'home' %}"><img src="{% static 'assets/images/logo/logo.png' %}"
+                                        alt="Site Logo" /></a>
+                            </div>
+                        </div>
+                        <!-- Header Logo End -->
+
+                        <!-- Header Menu Start -->
+                        <div class="col-xl-10 d-none d-lg-block">
+
+                            <div class="main-menu">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'home' %}">НҮҮР</a>
+                                    </li>
+                                    <li class="has-children position-static">
+                                        <a href="#">ШҮҮХИЙН ШИЙДВЭРИЙН<br>ТОЙМ <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{% url 'blogs_by_tag' 16 %}">ШИЙДВЭРИЙН ТОЙМ</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 17 %}">ШҮҮХИЙН ПРОЦЕССЫН ТОЙМ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="#">БИДНИЙ<br>ТУХАЙ <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a
+                                                    href="https://mn.wikipedia.org/wiki/Хан-Уул_дүүргийн_Иргэний_хэргийн_анхан_шатны_шүүх">ТҮҮХЭН
+                                                    ЗАМНАЛ</a></li>
+                                            <li><a href="{% url 'infoShuugch' %}">ШҮҮГЧ НАР</a></li>
+                                            <li><a href="{% url 'infoTamga' %}">ТАМГЫН ГАЗАР</a></li>
+                                            <li><a href="https://sites.google.com/view/183khanuul/">ЗАХИРГААНЫ АЖИЛТНУУД</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="#">МЭДЭЭ<br>МЭДЭЭЛЭЛ <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{% url 'blogs_with_type' 1 %}">ОНЦЛОХ МЭДЭЭ</a></li>
+                                            <li><a href="{% url 'blogs_with_type' 2 %}">ЦАГ ҮЕИЙН МЭДЭЭ</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 1 %}">НАРИЙВЧИЛСАН ЖУРАМ</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 2 %}">ШҮҮН ТАСЛАХ АЖИЛЛАГААНЫ МЭДЭЭ</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 3 %}">ШИЙДВЭРИЙН ХУРААНГУЙ</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 4 %}">ПРОЦЕССЫН ХУРААНГУЙ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="#">ИРГЭН<br>ТАНД <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{% url 'blogs_by_tag' 5 %}">ШҮҮХИЙН МЭДЭЭЛЭЛ ЛАВЛАГАА</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 6 %}">АРХИВЫН ҮЙЛЧИЛГЭЭ</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 7 %}">ИРГЭДИЙН ТӨЛӨӨЛӨГЧИЙН МЭДЭЭ</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 8 %}">НЭХЭМЖЛЭЛИЙН ЗАГВАРУУД</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 9 %}">ШҮҮХИЙН АЖИЛТНЫ ЁС ЗҮЙН ДҮРЭМ</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="#">ЭВЛЭРҮҮЛЭН<br>ЗУУЧЛАЛ <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{% url 'blogs_by_tag' 10 %}">ЭВЛЭРҮҮЛЭН ЗУУЧЛАЛ ГЭЖ ЮУ ВЭ?</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 11 %}">ЭВЛЭРҮҮЛЭН ЗУУЧЛАЛ ТАЙЛАН</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 12 %}">ВИДЕО</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 13 %}">ЭВЛЭРҮҮЛЭН ЗУУЧЛАЛЫН ТУХАЙ ХУУЛЬ</a></li>
+                                            <li><a href="{% url 'blogs_by_tag' 14 %}">ХУУЛЬ ТОГТООМЖУУД</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'blogs_by_tag' 15 %}">ТАЙЛАН</a></li>
+                                    <li><a href="https://shilendans.gov.mn/organization/28422?ry=2024">ШИЛЭН<br>ДАНС</a>
+                                    </li>
+                                    <li><a href="{% url 'contactIngo' %}">ХОЛБОО<br>БАРИХ</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- Header Menu End -->
+                        <!-- Header Action Start -->
+                        <div class="col-md-2 col-lg-2 col-2 justify-content-end">
+
+                            <!-- Mobile Menu Hambarger Action Button Start -->
+                            <a href="javascript:void(0)"
+                                class="header-action-btn header-action-btn-menu d-lg-none d-md-block">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                            <!-- Mobile Menu Hambarger Action Button End -->
+
+                        </div>
+                    </div>
+                    <!-- Header Action End -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Bottom End -->
+    <!-- Hero/Intro Slider Start -->
+    <div class="section">
+        <div class="hero-slider swiper-container">
+            <div class="swiper-wrapper">
+
+                <div class="hero-slide-item swiper-slide">
+                    <div class="hero-slide-bg">
+                        <img src="{% static 'assets/images/slider/slider2-1.jpg' %}" alt="Slider Image" />
+                    </div>
+                    <div class="container">
+                        <div class="hero-slide-content">
+                            <h2 class="title m-0">МОНГОЛ УЛСЫН ҮНДСЭН ХУУЛИАС</h2>
+                            <p style="color: antiquewhite; margin-left: 40px;">47.1. Монгол Улсад шүүх эрх мэдлийг
+                                гагцхүү шүүх хэрэгжүүлнэ.</p>
+                            <p style="color: antiquewhite; margin-left: 40px;">49.1. Шүүгч хараат бус байж, гагцхүү
+                                хуульд захирагдана.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Swiper Pagination Start -->
+            <div class="swiper-pagination d-lg-none"></div>
+            <!-- Swiper Pagination End -->
+
+            <!-- Swiper Navigation Start -->
+            <div class="home-slider-prev swiper-button-prev main-slider-nav d-lg-flex d-none"><i
+                    class="pe-7s-angle-left"></i></div>
+            <div class="home-slider-next swiper-button-next main-slider-nav d-lg-flex d-none"><i
+                    class="pe-7s-angle-right"></i></div>
+            <!-- Swiper Navigation End -->
+        </div>
+    </div>
+    <!-- Hero/Intro Slider End -->
+    <div class="section">
+        <p>&nbsp;</p>
+    </div>
+    
+    <div class="section">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col-lg-9 col-md-9">{% block content %}{% endblock %}</div>
+                <div class="col-lg-3 col-md-3">
+
+                    <div class="section-tittle mb-40" style="margin-top: 10px;">
+                        <h3>Хэрэгцээт холбоос</h3>
+                    </div>
+                    <!-- Flow Socail -->
+                    <div class="single-follow mb-45">
+                        <div class="single-box">
+                            <a href="http://supremecourt.mn/" target="_blank"
+                                class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/court.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Улсын дээд шүүх</span>
+                                </div>
+                            </a>
+                            <a href="http://judcouncil.mn/" target="_blank"
+                                class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/jud.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Шүүхийн ерөнхий зөвлөл</span>
+                                </div>
+                            </a>
+
+                            <a href="http://judcouncil.mn/site/news/yearsreport"
+                                target="_blank" class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/court.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Монгол улсын шүүхийн тайлан</span>
+                                </div>
+                            </a>
+
+                            <a href="http://103.11.195.37/app/dashboard/dashboard_ctrl/index/tuv/8"
+                                target="_blank" class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/court.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Монгол улсын шүүхийн нэгдсэн мэдээлэл</span>
+                                </div>
+                            </a>
+
+                            <a href="http://shuukh.mn/" target="_blank"
+                                class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/court.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Монгол улсын шүүхийн цахим сан</span>
+                                </div>
+                            </a>
+
+                            <a href="http://legalinfo.mn/" target="_blank"
+                                class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/suld.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Эрх зүйн мэдээллийн нэгдсэн систем</span>
+                                </div>
+                            </a>
+
+                            <a href="http://livecourt.mn/" target="_blank"
+                                class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/live.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">www.livecourt.mn шүүх хуралдаан систем</span>
+                                </div>
+                            </a>
+
+                            <a href="http://parliament.mn/d/stateinfo"
+                                target="_blank" class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/suld.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Төрийн мэдээлэл эмхэтгэл</span>
+                                </div>
+                            </a>
+
+                            <a href="https://www.legalinfo.mn/annex/details/7496?lawid=12293"
+                                target="_blank" class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/avliga.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Авилгатай тэмцэх үндэсний хөтөлбөр</span>
+                                </div>
+                            </a>
+
+                            <a href="http://103.11.195.37/app/dashboard/dashboard_ctrl/court_temdegt/tuv/8"
+                                target="_blank" class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/suld.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Улсын тэмдэгтийн хураамж бодох</span>
+                                </div>
+                            </a>
+
+                            <a href="http://103.11.195.37/app/dashboard/dashboard_ctrl/court_feedback/tuv/8"
+                                target="_blank" class="banners follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <img src="{% static 'assets/images/brand-logo/contact.png' %}" style="margin-right: 10px;"
+                                        alt="">
+                                </div>
+                                <div class="follow-count">
+                                    <span style="color: white;">Санал, хүсэлт илгээх</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+
+    </div>
+
+
+
+    <!-- Brand Logo Section Start -->
+    <div class="section section-margin">
+        <div class="container">
+            <div class="border-top border-bottom">
+
+                <div class="col-lg col-12">
+                    <div class="section-title mb-0 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <h2 class="title mb-2" style="padding-top: 40px;">ИРГЭН ТАНД</h2>
+                    </div>
+                </div>
+                <!-- Section Title End -->
+
+
+                <div class="row">
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                        <!-- Brand Logo Wrapper Start -->
+                        <div class="brand-logo-carousel arrow-outside-container">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <!-- Single Brand Logo Start -->
+                                    <div class="swiper-slide single-brand-logo">
+                                        <a href="#"><img src="{% static 'assets/images/brand-logo/tand01.jpg' %}"
+                                                alt="Brand Logo"></a>
+                                    </div>
+                                    <!-- Single Brand Logo End -->
+
+                                    <!-- Single Brand Logo Start -->
+                                    <div class="swiper-slide single-brand-logo">
+                                        <a href="#"><img src="{% static 'assets/images/brand-logo/tand03.jpg' %}"
+                                                alt="Brand Logo"></a>
+                                    </div>
+                                    <!-- Single Brand Logo End -->
+
+                                    <!-- Single Brand Logo Start -->
+                                    <div class="swiper-slide single-brand-logo">
+                                        <a href=""><img src="{% static 'assets/images/brand-logo/tand05.jpg' %}"
+                                                alt="Brand Logo"></a>
+                                    </div>
+                                    <!-- Single Brand Logo End -->
+
+                                    <!-- Single Brand Logo Start -->
+                                    <div class="swiper-slide single-brand-logo">
+                                        <a href="#"><img src="{% static 'assets/images/brand-logo/tand06.jpg' %}"
+                                                alt="Brand Logo"></a>
+                                    </div>
+                                    <!-- Single Brand Logo End -->
+
+                                    <!-- Single Brand Logo Start -->
+                                    <div class="swiper-slide single-brand-logo">
+                                        <a href="https://sites.google.com/view/183khanuul/"><img
+                                                src="{% static 'assets/images/brand-logo/tand07.jpg' %}"
+                                                alt="Brand Logo"></a>
+                                    </div>
+                                    <!-- Single Brand Logo End -->
+
+                                    <!-- Single Brand Logo Start -->
+                                    <div class="swiper-slide single-brand-logo">
+                                        <a href="https://forms.gle/3xpQj4xATrKoagMA8"><img
+                                                src="{% static 'assets/images/brand-logo/tand08.jpg' %}"
+                                                alt="Brand Logo"></a>
+                                    </div>
+                                    <!-- Single Brand Logo End -->
+
+                                </div>
+
+                                <!-- Swiper Pagination Start -->
+                                <div class="swiper-pagination d-none"></div>
+                                <!-- Swiper Pagination End -->
+
+                                <!-- Next Previous Button Start -->
+                                <div
+                                    class="swiper-logo-button-next swiper-button-next swiper-nav-button d-none d-md-flex">
+                                    <i class="pe-7s-angle-right"></i></div>
+                                <div
+                                    class="swiper-logo-button-prev swiper-button-prev swiper-nav-button d-none d-md-flex">
+                                    <i class="pe-7s-angle-left"></i></div>
+                                <!-- Next Previous Button End -->
+                            </div>
+                        </div>
+                        <!-- Brand Logo Wrapper End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Brand Logo Section End -->
+    <!-- Footer Section Start -->
+    <footer class="section footer-section">
+        <!-- Footer Top Start -->
+        <div class="footer-top bg-primary section-padding">
+            <div class="container">
+                <div class="row mb-n8">
+                    <div class="col-12 col-sm-6 col-lg-3 mb-8">
+                        <div class="single-footer-widget">
+                            <img style="width: 80%; margin-bottom: 10px;"
+                                src="{% static 'assets/images/logo/logo1.png' %}" alt="Site Logo" />
+                            <p class="desc-content">Шүүх өөрийн захиргаатай байх ба түүний чиг үүргийг Шүүхийн ерөнхий
+                                зөвлөл, шүүхийн тамгын газар хэрэгжүүлэх бөгөөд тэдгээрийн үйл ажиллагаатай холбогдсон
+                                харилцааг хуулиар зохицуулна.</p>
+                            <!-- Soclial Link Start -->
+                            <div class="widget-social justify-content-start mb-n2">
+                                <a title="Facebook" href="#"><i class="fa fa-facebook-f"></i></a>
+                                <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+                                <a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                                <a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
+
+                            </div>
+                            <!-- Social Link End -->
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-8">
+                        <div class="single-footer-widget">
+                            <h2 class="widget-title">Хаяг:</h2>
+                            <ul class="contact-links">
+                                <li><i class="fa fa-home"></i><span>Монгол улс, Улаанбаатар хот, Хан-Уул дүүрэг, 3-р
+                                        хороо, 19-р хороолол, Чингисийн өргөн чөлөө, "ХАН-УУЛ ДҮҮРГИЙН ИРГЭНИЙ ХЭРГИЙН
+                                        АНХАН ШАТНЫ ШҮҮХ"</span> </li>
+                                <li><i class="fa fa-map-marker"></i><span>Бүсчлэлийн зип код: 17042</span></li>
+                                <li><i class="fa fa-envelope-o"></i><span>Шуудангийн нэгдсэн код: 17042-0200</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-6 mb-8">
+                        <div class="single-footer-widget aos-init aos-animate">
+                            <h2 class="widget-title">Холбоо барих:</h2>
+                            <ul class="contact-links">
+                                <li>Мэдээлэл лавлагаа утас: +(976) - (11) - 341610 /Да-Ба 08:30-17:30, цайны цаг
+                                    12:30-13:30/</li>
+                                <li>Шүүгчийн туслахуудын утас: 7000-1031, 7000-1032 /Да-Ба 08:30-17:30, цайны цаг
+                                    12:30-13:30/</li>
+                                <li>Шүүхийн факс: +(976) - (11) - 341474</li>
+                                <li>Шүүхийн Тамгын газрын утас: 7000-7045</li>
+                                <li>Шүүхийн Тамгын газрын факс: 7000-7044</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Top End -->
+
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom bg-secondary pt-4 pb-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 text-center">
+                        <div class="copyright-content">
+                            <p class="mb-0">© 2024 <strong>Хан-Уул</strong> дүүргийн иргэний хэргийн анхан шатны шүүх
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom End -->
+    </footer>
+    <!-- Footer Section End -->
+
+
+    <a href="#" class="scroll-top show" id="scroll-top">
+        <i class="arrow-top pe-7s-angle-up-circle"></i>
+        <i class="arrow-bottom pe-7s-angle-up-circle"></i>
+    </a>
+    <!-- Mobile Menu Start -->
+    <div class="mobile-menu-wrapper">
+        <div class="offcanvas-overlay"></div>
+
+        <!-- Mobile Menu Inner Start -->
+        <div class="mobile-menu-inner">
+
+            <!-- Button Close Start -->
+            <div class="offcanvas-btn-close">
+                <i class="pe-7s-close"></i>
+            </div>
+            <!-- Button Close End -->
+
+            <!-- Mobile Menu Inner Wrapper Start -->
+            <div class="mobile-menu-inner-wrapper">
+                <!-- Mobile Menu Search Box Start -->
+                <div class="search-box-offcanvas">
+                    <form>
+                        <input class="search-input-offcanvas" type="text" placeholder="Хайлт хийх...">
+                        <button class="search-btn"><i class="pe-7s-search"></i></button>
+                    </form>
+                </div>
+                <!-- Mobile Menu Search Box End -->
+
+                <!-- Mobile Menu Start -->
+                <div class="mobile-navigation">
+                    <nav>
+                        <ul class="mobile-menu">
+                            <li><a href="{% url 'home' %}">НҮҮР</a></li>
+                            <li class="has-children">
+                                <a href="#">ШҮҮХИЙН ШИЙДВЭРИЙН ТОЙМ <i class="fa fa-angle-down"
+                                        aria-hidden="true"></i></a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'blogs_by_tag' 16 %}">ШИЙДВЭРИЙН ТОЙМ</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 17 %}">ШҮҮХИЙН ПРОЦЕССЫН ТОЙМ</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a href="#">БИДНИЙ ТУХАЙ <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                <ul class="dropdown">
+                                    <li><a
+                                            href="https://mn.wikipedia.org/wiki/Хан-Уул_дүүргийн_Иргэний_хэргийн_анхан_шатны_шүүх">ТҮҮХЭН
+                                            ЗАМНАЛ</a></li>
+                                    <li><a href="{% url 'infoShuugch' %}">ШҮҮГЧ НАР</a></li>
+                                    <li><a href="{% url 'infoTamga' %}">ТАМГЫН ГАЗАР</a></li>
+                                    <li><a href="https://sites.google.com/view/183khanuul/">ЗАХИРГААНЫ АЖИЛТНУУД</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a href="#">МЭДЭЭ МЭДЭЭЛЭЛ <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'blogs_with_type' 1 %}">ОНЦЛОХ МЭДЭЭ</a></li>
+                                    <li><a href="{% url 'blogs_with_type' 2 %}">ЦАГ ҮЕИЙН МЭДЭЭЭ</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 1 %}">НАРИЙВЧИЛСАН ЖУРАМ</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 2 %}">ШҮҮН ТАСЛАХ АЖИЛЛАГААНЫ МЭДЭЭ</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 3 %}">ШИЙДВЭРИЙН ХУРААНГУЙ</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 4 %}">ПРОЦЕССЫН ХУРААНГУЙ</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a href="#">ИРГЭН ТАНД <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'blogs_by_tag' 5 %}">ШҮҮХИЙН МЭДЭЭЛЭЛ ЛАВЛАГАА</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 6 %}">АРХИВЫН ҮЙЛЧИЛГЭЭ</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 7 %}">ИРГЭДИЙН ТӨЛӨӨЛӨГЧИЙН МЭДЭЭ</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 8 %}">НЭХЭМЖЛЭЛИЙН ЗАГВАРУУД</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 9 %}">ШҮҮХИЙН АЖИЛТНЫ ЁС ЗҮЙН ДҮРЭМ</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a href="#">ЭВЛЭРҮҮЛЭН ЗУУЧЛАЛ <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'blogs_by_tag' 10 %}">ЭВЛЭРҮҮЛЭН ЗУУЧЛАЛ ГЭЖ ЮУ ВЭ?</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 11 %}">ЭВЛЭРҮҮЛЭН ЗУУЧЛАЛ ТАЙЛАН</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 12 %}">ВИДЕО</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 13 %}">ЭВЛЭРҮҮЛЭН ЗУУЧЛАЛЫН ТУХАЙ ХУУЛЬ</a></li>
+                                    <li><a href="{% url 'blogs_by_tag' 14 %}">ХУУЛЬ ТОГТООМЖУУД</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">ТАЙЛАН</a></li>
+                            <li><a href="#">ШИЛЭН ДАНС</a></li>
+                            <li><a href="{% url 'contactIngo' %}">ХОЛБОО БАРИХ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Mobile Menu End -->
+
+
+
+                <!-- Contact Links/Social Links Start -->
+                <div class="mt-auto bottom-0">
+
+                    <!-- Contact Links Start -->
+                    <ul class="contact-links">
+                        <li><i class="fa fa-phone"></i><a href="#"> +967 (11)-341610</a></li>
+                        <li><i class="fa fa-envelope-o"></i><a href="#"> i_bkhs_tg@shuukh.mn</a></li>
+                        <li><i class="fa fa-clock-o"></i> <span>Даваа - Баасан 9.00 - 18.00</span> </li>
+                    </ul>
+                    <!-- Contact Links End -->
+
+                    <!-- Social Widget Start -->
+                    <div class="widget-social">
+                        <a title="Facebook" href="https://www.facebook.com/khanuul.civilcourt.gov.mn/"><i class="fa fa-facebook-f"></i></a>
+                        <!--<a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+                    <a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>-->
+                        <a title="Youtube" href="https://www.youtube.com/@Хан-УулдүүргийнИргэнийхэргийна"><i class="fa fa-youtube"></i></a>
+                        <!--<a title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a>-->
+                    </div>
+                    <!-- Social Widget Ende -->
+                </div>
+                <!-- Contact Links/Social Links End -->
+            </div>
+            <!-- Mobile Menu Inner Wrapper End -->
+
+        </div>
+        <!-- Mobile Menu Inner End -->
+    </div>
+    <!-- Mobile Menu End -->
+
+    <script src="{% static 'assets/js/vendor.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+    {% block script_extends %}{% endblock %}
+</body>
+
+</html>
