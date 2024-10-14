@@ -1,0 +1,10 @@
+django
+django-ckeditor
+django-js-asset
+django-model-utils
+django-notifications-hq
+jsonfield
+django-import-export
+Pillow
+pytz
+wheel

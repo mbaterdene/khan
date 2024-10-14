@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_tags %}
+
+{% block title %}My site|Bind users{% endblock %}
+{% block nav_home_active %}active{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                {% if not user.is_authenticated %}
+                    <div style="margin: 0 auto; text-align:center;">
+                        <img style="border-radius: 50%;" src="{{ avatar }}">
+                        <p>Hello，{{ nickname }}</p>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Bind user</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                {% for field in bind_qq_form %}
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    {{ field }}
+                                    <p class="text-danger">{{ field.errors.as_text }}</p>
+                                {% endfor %}
+                                <span id="tip" class="text-danger">{{ bind_qq_form.non_field_errors }}</span>
+                                <div class="clearfix"></div>
+                                <a href="{% url 'forgot_password' %}" class="pull-left">forget password?</a>
+                                <input type="submit" value="Binding" class="btn btn-primary pull-right">
+                            </form>
+                        </div>
+                    </div>
+                    <a style="text-align: center; display: block;" href="{% url 'create_user_by_qq' %}?nickname={{ nickname }}">
+                        No account? Log in directly and create an account &gt; &gt;
+                    </a>
+                {% else %}
+                    <span>Logged in, jump to the home page...</span>
+                    <script type="text/javascript">
+                        window.location.href = '/';
+                    </script>
+                {% endif %}              
+            </div>
+        </div>
+    </div>    
+{% endblock %}

@@ -1,0 +1,5 @@
+<li>classification：
+                    {% for tags in blog.blog_type %}
+                        {{ tags }}
+                    {% endfor %}
+                    </li>
